@@ -39,7 +39,7 @@ static void configure_button(void)
 		printk("cannot find %s", DT_ALIAS_SW0_LABEL);
 	}
 
-	mb_button_init(btn_a, btn_a_pressed, NULL, false);
+	mb_button_init(btn_a, btn_a_pressed, NULL, true);
 }
 
 void board_output_number(bt_mesh_output_action_t action, u32_t number)
@@ -52,8 +52,6 @@ void board_output_number(bt_mesh_output_action_t action, u32_t number)
 					 { 0, 0, 1, 0, 0 });
 
 	oob_number = number;
-
-	mb_button_enable_callback(btn_a);
 
 	mb_display_image(disp, MB_DISPLAY_MODE_DEFAULT, K_FOREVER, &arrow, 1);
 }
